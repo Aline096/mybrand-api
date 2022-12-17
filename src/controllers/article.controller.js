@@ -1,4 +1,4 @@
-const Article = require('../models/article');
+import Article from '../models/article.model'
 
 async function createArticle (req, res, next) {
     try {
@@ -32,15 +32,26 @@ async function getAllArticle (req, res, next) {
     
 }
 
-function updateArticle (req, res, next) {
-    res.status(200).json({status: 200, message: "Article updated successfully"})
+async function updateArticle (req, res, next) {
+    try {
+        await Article.findByIdAndUpdate(req.params.id, req.body)
+        res.status(200).json({status: 200, message: "Article updated successfully"})
+    } catch (err) {
+        res.status(400).json({error:err.message});
+    }    
 }
 
-function deleteArticle (req, res, next) {
-    res.status(200).json({status: 200, message: "Article deleted successfully"})
+async function deleteArticle (req, res, next) {
+    try{
+        const article = await Article.findByIdAndDelete(req.params.id)
+        res.status(200).json({status: 200, message: "Article deleted successfully", data:req.params.id})
+    }
+    catch (err) {
+        res.status(400).json({error:err.message});
+    }
 }
 
-module.exports = {
+export {
     createArticle,
     getAllArticle,
     getArticle,

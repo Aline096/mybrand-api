@@ -1,10 +1,10 @@
-const express = require('express')
-const app = express()
-const routes = require('./routes')
-const mongoose = require('mongoose');
-const bodyParser = require('body-parser');
-
+import express from 'express'
+import routes from './routes'
+import mongoose from 'mongoose'
+import bodyParser from 'body-parser';
 require('dotenv').config();
+
+const app = express()
 
 const port = 3000
 
