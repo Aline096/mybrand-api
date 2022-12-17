@@ -1,9 +1,16 @@
-const express = require('express')
+import express from 'express';
+import welcome from './welcome.routes'
+import article from './article.routes'
+import comment from './comment.routes'
+import message from './message.routes'
+import user from './user.routes'
+
 const router = express.Router()
-const welcome = require('./welocome.routes')
-const article = require('./article.routes')
 
 router.use('/', welcome)
 router.use('/article', article)
+router.use('/comment', comment)
+router.use('/message', message)
+router.use('/user',user)
 
-module.exports = router
+export default router
