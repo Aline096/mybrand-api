@@ -1,4 +1,6 @@
+import { date, string } from 'joi';
 import mongoose from 'mongoose'
+
 const Schema = mongoose.Schema;
 const articleSchema = new Schema({
     title:{
@@ -12,9 +14,17 @@ const articleSchema = new Schema({
     description:{
         type: String,
         required: [true, 'The description field is required.']
-    }
+    },
+    comments:{
+        type: Array,
+        default:[],
+    },
+    likes: { 
+        type:Number, 
+        default:0
+    },
 });
 
 const Article = mongoose.model('article', articleSchema)
 
-module.exports = Article;
+export default Article
