@@ -1,22 +1,22 @@
 import express from 'express'
-import auth from '../middlewares/authMiddleware'
+import {authGuard} from '../middlewares/authGuard'
 import {createArticle, getAllArticle, getArticle, updateArticle, deleteArticle} from'./../controllers/article.controller'
 
 const router = express.Router()
 
 // Create article
-router.post('',auth, createArticle)
+router.post('', authGuard, createArticle)
 
 // Get all articles
-router.get('/', getAllArticle)
+router.get('/', authGuard, getAllArticle)
 
 // Get article by id
 router.get('/:id', getArticle)
 
 // Update article by id
-router.patch('/:id',auth, updateArticle)
+router.patch('/:id', authGuard, updateArticle)
 
 // Delete article by id
-router.delete('/:id',auth, deleteArticle)
+router.delete('/:id', authGuard, deleteArticle)
 
 export default router
