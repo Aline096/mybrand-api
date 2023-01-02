@@ -11,7 +11,7 @@ const connectDB = async () => {
         const users = [
             {
                 username: 'UWERA ADMIN',
-                email: 'admin@uwera.portfolio',
+                email: 'admin@gmail.com',
                 password: await hashContent('Password@123')
             }
         ]
