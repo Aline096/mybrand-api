@@ -10,12 +10,13 @@ import { StatusCodes } from 'http-status-codes';
 import { BadRequestHttpError } from './common/errors/badRequestHttpError';
 require('dotenv').config();
 
-export const app = express()
+const app = express()
 
-const port = 3000
+const port = 5000
 
 mongoose.set('strictQuery', true)
-mongoose.connect(process.env.DATABASEURL, { useNewUrlParser: true, useUnifiedTopology: true});
+mongoose.connect(process.env.DATABASEURL_TEST, { useNewUrlParser: true, useUnifiedTopology: true});
+afterAll(() => mongoose.disconnect());
 app.use(bodyParser.json());
 
 app.use('/api', routes)
@@ -29,7 +30,7 @@ app.all('*', (req, res, next) => {
 })
 
 app.use((error, req, res, next) => {
-  console.log(error)
+  // console.log(error)
   const statusCode = error.status || StatusCodes.INTERNAL_SERVER_ERROR
   res.status(statusCode).json({
     name: error.name,
@@ -39,6 +40,4 @@ app.use((error, req, res, next) => {
   })
 })
 
-app.listen(process.env.PORT || port, () => {
-  console.log(`The app is listening on port ${port}`)
-})
+module.exports = app;
