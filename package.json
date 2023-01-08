@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "build": "del-cli --force dist && babel ./src/ -d dist",
-    "dev": "npm run seed && nodemon --exec babel-node ./src/server.js",
-    "test": "node src/server.js",
+    "dev": "cross-env NODE_ENV=development npm run seed && nodemon --exec babel-node ./src/server.js",
+    "test": "cross-env NODE_ENV=test npm run seed && jest --forceExit --detectOpenHandles --watchAll --maxWorker=1",
     "start": "npm run seed && node ./dist/server.js",
     "seed": "npm run build && node ./dist/seeds/*.seed.js"
   },
@@ -20,6 +20,7 @@
   "dependencies": {
     "bcrypt": "^5.1.0",
     "body-parser": "^1.20.1",
+    "cross-env": "^7.0.3",
     "del-cli": "^5.0.0",
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
@@ -28,7 +29,8 @@
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^6.8.0",
     "passport": "^0.6.0",
-    "passport-http-bearer": "^1.0.1"
+    "passport-http-bearer": "^1.0.1",
+    "swagger-ui-express": "^4.6.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.19.3",
@@ -38,6 +40,14 @@
     "babel": "^6.23.0",
     "babel-cli": "^6.26.0",
     "babel-preset-env": "^1.7.0",
-    "nodemon": "^2.0.20"
+    "jest": "^29.3.1",
+    "nodemon": "^2.0.20",
+    "supertest": "^6.3.3"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "coveragePathIgnorePatterns": [
+      "/node_modules/"
+    ]
   }
 }

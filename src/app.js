@@ -10,17 +10,17 @@ import { StatusCodes } from 'http-status-codes';
 import { BadRequestHttpError } from './common/errors/badRequestHttpError';
 require('dotenv').config();
 
-export const app = express()
+const app = express()
 
-const port = 3000
+const port = 5000
 
 mongoose.set('strictQuery', true)
-mongoose.connect(process.env.DATABASEURL, { useNewUrlParser: true, useUnifiedTopology: true});
+mongoose.connect(process.env.DATABASEURL_TEST, { useNewUrlParser: true, useUnifiedTopology: true});
 
 app.use(bodyParser.json());
 
 app.use('/api', routes)
-console.log(docs)
+
 app.use('/api-docs',swaggerUI.serve,swaggerUI.setup(docs));
 
 // This will catch all 404 errors with wild card "*"
@@ -40,6 +40,4 @@ app.use((error, req, res, next) => {
   })
 })
 
-app.listen(process.env.PORT || port, () => {
-  console.log(`The app is listening on port ${port}`)
-})
+module.exports = app;

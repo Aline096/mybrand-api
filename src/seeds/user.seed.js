@@ -7,7 +7,7 @@ const connectDB = async () => {
     try {
         await mongoose.set('strictQuery', true)
         await mongoose.set('debug', true)
-        await mongoose.connect(process.env.DATABASEURL, { useNewUrlParser: true, useUnifiedTopology: true});
+        await mongoose.connect(process.env.NODE_ENV === 'test' ? process.env.DATABASEURL_TEST : process.env.DATABASEURL, { useNewUrlParser: true, useUnifiedTopology: true});
         const users = [
             {
                 username: 'UWERA ADMIN',
