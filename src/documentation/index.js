@@ -1,5 +1,5 @@
 import basicInfo from './basicInfo'
 
-export default {
+module.exports= {
     ...basicInfo,
 };

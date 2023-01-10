@@ -16,7 +16,7 @@ const port = 5000
 
 mongoose.set('strictQuery', true)
 mongoose.connect(process.env.DATABASEURL_TEST, { useNewUrlParser: true, useUnifiedTopology: true});
-
+afterAll(() => mongoose.disconnect());
 app.use(bodyParser.json());
 
 app.use('/api', routes)
@@ -30,7 +30,7 @@ app.all('*', (req, res, next) => {
 })
 
 app.use((error, req, res, next) => {
-  console.log(error)
+  // console.log(error)
   const statusCode = error.status || StatusCodes.INTERNAL_SERVER_ERROR
   res.status(statusCode).json({
     name: error.name,

@@ -16,11 +16,10 @@ const port = 3000
 
 mongoose.set('strictQuery', true)
 mongoose.connect(process.env.DATABASEURL, { useNewUrlParser: true, useUnifiedTopology: true});
-
 app.use(bodyParser.json());
 
 app.use('/api', routes)
-console.log(docs)
+
 app.use('/api-docs',swaggerUI.serve,swaggerUI.setup(docs));
 
 // This will catch all 404 errors with wild card "*"

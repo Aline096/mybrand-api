@@ -1,4 +1,5 @@
 import mongoose from 'mongoose'
+
 const Schema = mongoose.Schema;
 const articleSchema = new Schema({
     title:{
@@ -12,9 +13,12 @@ const articleSchema = new Schema({
     description:{
         type: String,
         required: [true, 'The description field is required.']
-    }
+    },
+    comment:[{ name: String, message: String }],
+    likes: 0,
 });
 
 const Article = mongoose.model('article', articleSchema)
 
-module.exports = Article;
+// module.exports = Article;
+export default Article

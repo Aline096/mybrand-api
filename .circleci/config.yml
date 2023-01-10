@@ -5,6 +5,8 @@ orbs:
 
 jobs:
   build:
+    docker:
+      - image: circleci/node:15
     steps:
       - checkout
       - run:
@@ -12,22 +14,9 @@ jobs:
           command: npm install
       - run:
           name: 'TESTING'
-          command: 'yarn run test'
-      - run:
-          name: coverage
-          command: yarn run coverage
-
-      - coveralls/upload
-      - store_artifacts:
-          path: test-results
-
-      - store_artifacts:
-          path: coverage
-
-      - store_test_results:
-          path: test-results
-
-workflows:
-  test-deploy:
-    jobs:
-      - build
+          command: npm run test
+      - coveralls/upload 
+   
+ notify:
+  webhooks:
+    - url: https://coveralls.io/webhook?repo_token=$%7Bprocess.env.COVERALLS_REPO_TOKEN%7D 
