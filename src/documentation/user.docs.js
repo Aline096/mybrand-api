@@ -43,7 +43,7 @@ const createUser = {
 }
         
 const userRouteDocs= {
-    "/user/signin":{
+    "/api/user/signin":{
         post:createUser,
      },
 }
