@@ -1,12 +1,16 @@
 version: 2.1
-
-# orbs:
-#   coveralls: coveralls/coveralls@1.0.6
-
+orbs:
+  coveralls: coveralls/coveralls@1.0.6
 jobs:
   build:
     docker:
-      - image: circleci/node:15
+      - image: circleci/node:10.16.0
+    working_directory: ~/mybrand-api
+    environment: 
+      DATABASEURL: process.env.DATABASEURL
+      DATABASEURL_TEST: process.env.DATABASEURL_TEST
+      JWT_SECRETE: process.env.JWT_SECRETE
+      CLOUDINARY_URL: process.env.CLOUDINARY_URL
     steps:
       - checkout
       - run:
@@ -15,13 +19,15 @@ jobs:
       - run:
           name: 'TESTING'
           command: npm run test
-      # - coveralls/upload 
-
-workflows:
-  test-deploy:
-    jobs:
-      - build
-   
-# notify:
-#   webhooks:
-#     - url: https://coveralls.io/webhook?repo_token=$%7Bprocess.env.COVERALLS_REPO_TOKEN%7D 
+      - coveralls/upload 
+      - store_artifacts:
+          path: test-results
+          prefix: tests
+      - store_artifacts:
+          path: coverage
+          prefix: coverage
+      - store_test_results:
+          path: test-results
+notify:
+  webhooks:
+    - url: https://coveralls.io/webhook?repo_token=$%7Bprocess.env.COVERALLS_REPO_TOKEN%7D 
