@@ -44,7 +44,7 @@ const addComment = {
 }
         
 const commentRouteDocs= {
-    "/comment/{articleId}":{
+    "/api/comment/{articleId}":{
         patch:addComment,
      },
 }

@@ -50,7 +50,7 @@ const unliked = {
 }
         
 const likeRouteDocs= {
-    "/like/{articleId}":{
+    "/api/like/{articleId}":{
         patch:liked,
         put:unliked,
      },

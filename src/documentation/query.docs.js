@@ -101,12 +101,12 @@ const deleteMessage={
 }
 
 const queryRouteDocs = {
-    "/message":{
+    "/api/message":{
         get: getAllMessages,
         post:createMessage,
       },
 
-    "/message/{id}":{
+    "/api/message/{id}":{
          get: getMessage,
          delete: deleteMessage,
     },

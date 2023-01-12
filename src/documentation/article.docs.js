@@ -221,12 +221,12 @@ const getAllArticles = {
   }
 
 const articleRouteDocs = {
-    "/article":{
+    "/api/article":{
         get: getAllArticles,
         post:createArticle,
       },
 
-    "/article/{id}":{
+    "/api/article/{id}":{
         get: getArticle,
         put: updateArticle,
         delete: deleteArticle,
