@@ -18,6 +18,8 @@ const basicInfo = {
       },
     },
 
+    schemes: ['HTTP', 'HTTPS'],
+
     components:{
         securitySchemes: {
             bearerAuth: {
