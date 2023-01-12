@@ -5,7 +5,6 @@ jobs:
   build:
     docker:
       - image: circleci/node:10.16.0
-    working_directory: ~/mybrand-api
     environment: 
       DATABASEURL: process.env.DATABASEURL
       DATABASEURL_TEST: process.env.DATABASEURL_TEST
