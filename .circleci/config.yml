@@ -6,10 +6,10 @@ jobs:
     docker:
       - image: circleci/node:15
     environment: 
-      DATABASEURL: DATABASEURL
-      DATABASEURL_TEST: DATABASEURL_TEST
-      JWT_SECRETE: JWT_SECRETE
-      CLOUDINARY_URL: CLOUDINARY_URL
+      DATABASEURL: $DATABASEURL
+      DATABASEURL_TEST: $DATABASEURL_TEST
+      JWT_SECRETE: $JWT_SECRETE
+      CLOUDINARY_URL: $CLOUDINARY_URL
     steps:
       - checkout
       - run:
