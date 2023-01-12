@@ -6,10 +6,10 @@ jobs:
     docker:
       - image: circleci/node:15
     environment: 
-      DATABASEURL: process.env.DATABASEURL
-      DATABASEURL_TEST: process.env.DATABASEURL_TEST
-      JWT_SECRETE: process.env.JWT_SECRETE
-      CLOUDINARY_URL: process.env.CLOUDINARY_URL
+      DATABASEURL: DATABASEURL
+      DATABASEURL_TEST: DATABASEURL_TEST
+      JWT_SECRETE: JWT_SECRETE
+      CLOUDINARY_URL: CLOUDINARY_URL
     steps:
       - checkout
       - run:
@@ -29,4 +29,4 @@ jobs:
           path: test-results
 notify:
   webhooks:
-    - url: https://coveralls.io/webhook?repo_token=$%7Bprocess.env.COVERALLS_REPO_TOKEN%7D 
+    - url: https://coveralls.io/webhook?repo_token=$%7BCOVERALLS_REPO_TOKEN%7D 
