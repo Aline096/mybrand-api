@@ -18,13 +18,6 @@ const basicInfo = {
       },
     },
 
-    servers:[
-      {
-        url:"http://localhost:3000/api",
-        description:" Local dev"
-      }      
-    ],
-
     components:{
         securitySchemes: {
             bearerAuth: {
