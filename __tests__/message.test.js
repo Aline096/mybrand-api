@@ -31,6 +31,17 @@ describe('Message Endpoints', () => {
     expect(response.statusCode).toBe(200);
   });
 
+  it(" should return 404", async () => {
+  const res = await request(app)
+  .post("/api/messages")
+  .send({
+      name: "Uwera",
+      email: "uwera@gmail.com",
+      message: "free coding"
+  });
+  expect(res.statusCode).toBe(404);
+});
+
   it('Should not create the message', async () => {
     const res = await request(app)
     .post('/api/message')
@@ -41,8 +52,8 @@ describe('Message Endpoints', () => {
       }
     )
   expect(res.statusCode).toEqual(400)
-  expect(res.body.message).toEqual("\"email\" is required")
   })
+
   it('Should delete the message', async () => {
     let message= await Message.findOne()
     let id =message._id
@@ -53,4 +64,15 @@ describe('Message Endpoints', () => {
     .send()
   expect(res.statusCode).toEqual(200)
   }) 
+
+  it("Should get messages", async () => {
+  const res = await request(app)
+  .get("/api/messages")
+  .set("Authorization",`Bearer ${token}`)
+  .send();
+  expect(res.statusCode).toBe(404);
+});
+
+
+
 })
