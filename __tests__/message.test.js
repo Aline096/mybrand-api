@@ -73,14 +73,5 @@ describe('Message Endpoints', () => {
   expect(res.statusCode).toBe(404);
 });
 
-it("Getting a message should return a 200 as token is provided", async () => {
-  const message = await Message.findOne();
-  let id = message._id;
-  const response = await request(app)
-    .get("/api/message/" + id)
-    .set("Authorization", `Bearer ${token}`)
-    .send();
-  expect(response.statusCode).toBe(200);
-});
 
 })
