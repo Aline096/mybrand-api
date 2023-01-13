@@ -6,7 +6,7 @@
   "scripts": {
     "build": "del-cli --force dist && babel ./src/ -d dist",
     "dev": "cross-env NODE_ENV=development npm run seed && nodemon --exec babel-node ./src/server.js",
-    "test": "cross-env NODE_ENV=test npm run seed && jest --detectOpenHandles --forceExit --maxWorker=1 --coverage  --collect-coverage && coveralls < coverage/lcov.info",
+    "test": "cross-env NODE_ENV=test npm run seed && jest --maxWorker=1 --coverage ",
     "start": "npm run seed && node ./dist/server.js",
     "seed": "npm run build && node ./dist/seeds/*.seed.js"
   },
@@ -56,9 +56,10 @@
     ],
     "coverageDirectory": "./coverage",
     "coverageReporters": [
-      "html",
-      "text",
-      "text-summary"
+      "text", 
+      "text-summary", 
+      "lcov"
     ]
+
   }
 }
