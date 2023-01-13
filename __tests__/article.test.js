@@ -138,10 +138,48 @@ it("Should create an article likes", async () => {
     });
     expect(res.statusCode).toBe(500);
     })
-})
 
+    it('should check validation', async()=>{
+      const res = await request(app).post('/user/signin').send({
+        email: "admin@gmail.com",
+        password: "Password@123"
+    });
+      expect(res.statusCode).toBe(404)
+  })
 
+//new
 
+  it("Should return a 400 ", async () => {
+    const res = await request(app)
+      .post("/api/user/signin")
+      .set("Authorization", `Bearer ${token}`)
+      .send({
+        name: "Uwera",
+        email: "uwera@gmail.com",
+      });
+    expect(res.statusCode).toBe(400);
+  });
 
+  it("Should return a 400", async () => {
+    const res = await request(app)
+      .post("/api/user/signin")
+      .set("Authorization", `Bearer ${token}`)
+      .send({
+        name: "Uwera",
+        email: "uwera@gmail.com",
+        password: "password",
+      });
+    expect(res.statusCode).toBe(400);
+  });
+  it("Should return a 200 ", async () => {
+    const response = await request(app)
+      .post("/api/user/signin")
+      .set("Authorization", `Bearer ${token}`)
+      .send({
+        name: "Uwera",
+        email: "uwera@gmail.com",
+      });
+    expect(response.statusCode).toBe(400);
+  });
 
-
+});
