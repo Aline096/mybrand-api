@@ -2,11 +2,11 @@ import request from 'supertest'
 import app from '../src/app'
 import Article from '../src/models/article.model'
 
-describe('article Endpoints', () => {
+describe('articles Endpoints', () => {
   let token=""
   const getArticle = async()=>{
     const result = await request(app)
-    .post('/article')
+    .post('/articles')
     .set('Authorization',`Bearer ${token}`)
     .send({
         title: "The title",
@@ -29,10 +29,10 @@ describe('article Endpoints', () => {
     token=res.body.payload.accessToken
   })
 
-  it('Should create the article', async () => {
+  it('Should create the articles', async () => {
     const filePath = `${__dirname}/testFiles/test.pdf`;
     const res = await request(app)
-    .post('/api/article')
+    .post('/api/articles')
     .set('Accept', 'application/json')
     .set('Authorization', `Bearer ${token}`)
     .send(
@@ -47,7 +47,7 @@ describe('article Endpoints', () => {
 
   it('Should not create the article', async () => {
     const res = await request(app)
-    .post('/api/article')
+    .post('/api/articles')
     .set('Accept', 'application/json')
     .send(
       {
@@ -67,7 +67,7 @@ describe('article Endpoints', () => {
     const result = await getArticle();
     const id = result.body._id;
     const res = await request(app)
-    .delete('/api/article/'+id)
+    .delete('/api/articles/'+id)
     .set('Accept', "application/json")
     .set('Authorization', `Bearer ${token}`)
     .send()
@@ -76,18 +76,18 @@ describe('article Endpoints', () => {
 
   it('should get All The articles', async () => {
     const res = await request(app)
-    .get('/api/article')
+    .get('/api/articles')
     .send()
     expect(res.statusCode).toBe(200);
   });
 
   it('should Update an article', async () => {
-    // const article= await Article.findOne();
+    // const article= await article.findOne();
     // const id = article._id;
     const result = await getArticle();
     const id = result.body._id;
     const res = await request(app)
-    .put('/api/article/'+id)
+    .put('/api/articles/'+id)
     .set('Accept', 'application/json')
     .set('Authorization', `Bearer ${token}`)
     .send(
@@ -104,7 +104,7 @@ it("should get single the article", async () => {
     const result = await getArticle();
     const id = result.body._id;
     const response = await request(app)
-    .get("/api/article/"+id);
+    .get("/api/articles/"+id);
     expect(response.statusCode).toBe(500)
 })
 
@@ -127,7 +127,7 @@ it("Should create an article likes", async () => {
     expect(res.statusCode).toBe(500);
     })
 
-  it("Should comment on an article", async () => {
+  it("Should comment on an articles", async () => {
     const result = await getArticle();
     const id = result.body._id;
     const res= await request(app)

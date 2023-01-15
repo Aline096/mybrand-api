@@ -8,6 +8,7 @@ import docs from'./documentation';
 import { ApplicationError } from './common/errors/error';
 import { StatusCodes } from 'http-status-codes';
 import { BadRequestHttpError } from './common/errors/badRequestHttpError';
+import cors from 'cors'
 import 'dotenv/config';
 
 export const app = express()
@@ -17,6 +18,10 @@ const port = 3000
 mongoose.set('strictQuery', true)
 mongoose.connect(process.env.DATABASEURL, { useNewUrlParser: true, useUnifiedTopology: true});
 app.use(bodyParser.json());
+
+app.use(cors({
+  origin: '*'
+}));
 
 app.use('/api', routes)
 

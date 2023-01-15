@@ -8,7 +8,7 @@ const article = [
 ]
 
 const getAllArticles = {
-    tags:["Article"],
+    tags:["Articles"],
     summary:"List of all the articles",
     description:"Get all of the articles",
     responses:{
@@ -34,7 +34,7 @@ const getAllArticles = {
   }
 
   const createArticle = {
-    tags:["Article"],
+    tags:["Articles"],
     summary:"Create an Article",
     description:"create article",
     parameters: [],
@@ -92,7 +92,7 @@ const getAllArticles = {
   }
 
   const getArticle={
-    tags:["Article"],
+    tags:["Articles"],
     summary:"Get article by id",
     description:"return a single article",
     parameters:[
@@ -126,7 +126,7 @@ const getAllArticles = {
   }
 
   const updateArticle={
-    tags:["Article"],
+    tags:["Articles"],
     summary:"Update article ",
     description:"Update a single article",
     parameters:[
@@ -190,7 +190,7 @@ const getAllArticles = {
   }
 
   const deleteArticle={
-    tags:["Article"],
+    tags:["Articles"],
     summary:"Delete article ",
     description:"Delete an article",
     parameters:[
@@ -221,12 +221,12 @@ const getAllArticles = {
   }
 
 const articleRouteDocs = {
-    "/api/article":{
+    "/api/articles":{
         get: getAllArticles,
         post:createArticle,
       },
 
-    "/api/article/{id}":{
+    "/api/articles/{id}":{
         get: getArticle,
         put: updateArticle,
         delete: deleteArticle,

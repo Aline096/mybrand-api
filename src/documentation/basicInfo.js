@@ -37,11 +37,11 @@ const basicInfo = {
         description:"User routes",
       },
       {
-        name:"Article",
+        name:"Articles",
         description:"Article routes",
       },
       {
-        name: "Comment",
+        name: "Comments",
         description: "Comment route"
       },
       {
@@ -49,7 +49,7 @@ const basicInfo = {
         description: "Like routes"
       },
       {
-        name: "Query",
+        name: "Queries",
         description: "Message routes"
       }      
     ],

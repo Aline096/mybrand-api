@@ -9,7 +9,7 @@ import like from './like.routes'
 const router = express.Router()
 
 router.use('/', welcome)
-router.use('/article', article)
+router.use('/articles', article)
 router.use('/comment', comment)
 router.use('/message', message)
 router.use('/user',user)
