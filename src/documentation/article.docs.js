@@ -228,7 +228,7 @@ const articleRouteDocs = {
 
     "/api/articles/{id}":{
         get: getArticle,
-        put: updateArticle,
+        patch: updateArticle,
         delete: deleteArticle,
     },
     
