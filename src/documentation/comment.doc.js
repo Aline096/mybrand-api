@@ -1,6 +1,6 @@
 
 const addComment = {
-    tags:["Comment"],
+    tags:["Comments"],
     summary:"Add a comment",
     description:"Add comment",
     parameters:[
@@ -23,7 +23,7 @@ const addComment = {
                     properties:{
                         commentor:{
                             type:"string",
-                            description:"Namee of commentor",
+                            description:"Name of commentor",
                             example:"Uwera",
                         },
                         comment:{

@@ -1,5 +1,5 @@
 const getAllMessages = {
-    tags:["Query"],
+    tags:["Queries"],
     summary:"List of all the Messages",
     description:"Get all messages",
     responses:{
@@ -24,18 +24,36 @@ const getAllMessages = {
   }
 
 const createMessage={
-    tags:["Query"],
+    tags:["Queries"],
     summary:"Create message",
     description:"Create message",
-    parameters:[
-        {
-            name:"Message",
-            in:"body",
-            schema:{
-                type: "string",
-            }
-        },
-    ],
+    requestBody:{
+      content:{
+          "application/json":{
+              schema:{
+                  type:"object",
+                  properties:{
+                      name:{
+                          type:"string",
+                          description:"Name",
+                          example:"Uwera",
+                      },
+                      email:{
+                          type:"string",
+                          description:"email",
+                          example:"Aline@gmail.com"
+                      },
+                      message:{
+                        type:"string",
+                        description:"Message",
+                        example:"Marvelous"
+                    },
+
+                  },
+              }
+          },
+      }
+  },
     responses:{
         200:{
           description: "OK",
@@ -48,7 +66,7 @@ const createMessage={
   }
 
 const getMessage={
-    tags:["Query"],
+    tags:["Queries"],
     summary:"Get message by id",
     description:"return a single message",
     parameters:[
@@ -77,7 +95,7 @@ const getMessage={
 }
 
 const deleteMessage={
-    tags:["Query"],
+    tags:["Queries"],
     summary:"Delete message ",
     description:"Delete a message",
     parameters:[

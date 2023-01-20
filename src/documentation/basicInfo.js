@@ -38,19 +38,19 @@ const basicInfo = {
       },
       {
         name:"Articles",
-        description:"Article routes",
+        description:"Articles routes",
       },
       {
         name: "Comments",
-        description: "Comment route"
+        description: "Comments route"
       },
       {
         name: "Likes",
-        description: "Like routes"
+        description: "Likes routes"
       },
       {
         name: "Queries",
-        description: "Message routes"
+        description: "Messages routes"
       }      
     ],
     
