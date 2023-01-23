@@ -14,7 +14,7 @@ const createMessage = async (req, res) => {
 const getMessages = async (req, res) => {
     try {
         const messages = await Message.find({});
-        res.status(200).json(messages)
+        res.status(200).json({status: StatusCodes.OK, message:'your query is sent', payload: messages})
     } catch (error) {
         res.status(400).json({message:error.message})
     }
