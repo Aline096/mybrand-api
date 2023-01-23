@@ -24,7 +24,6 @@ const articleSchema = new Schema({
     },
     created_date: {
         type: Date,
-        default: Date()
         }
 });
 
