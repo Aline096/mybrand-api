@@ -1,11 +1,11 @@
 import Message from '../models/message.model';
-
+import { StatusCodes } from 'http-status-codes';
 
 // Creating a message to the database
 const createMessage = async (req, res) => {
     try {
         const message = await Message.create(req.body);
-        res.send({sent: "your query is sent", message: message});
+        res.status(StatusCodes.OK).json({status: StatusCodes.OK, message:'your query is sent', payload: message})
     } catch (error) {
         res.status(500). send({error: error.message})
     }

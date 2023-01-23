@@ -10,7 +10,7 @@ const router = express.Router()
 const storage = multer.diskStorage({});
 const uploads = multer({ storage, fileFilter });
 // Create article
-router.post('', authGuard, uploads.single('picture'),createArticleValidation, createArticle)
+router.post('/', authGuard, uploads.single('picture'),createArticleValidation, createArticle)
 
 // Get all articles
 router.get('/', getAllArticle)

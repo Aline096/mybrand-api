@@ -22,6 +22,10 @@ const articleSchema = new Schema({
         type:Number, 
         default:0
     },
+    created_date: {
+        type: Date,
+        default: Date()
+        }
 });
 
 const Article = mongoose.model('article', articleSchema)
